@@ -1,0 +1,199 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>authenticationApp</name>
+    </assembly>
+    <members>
+        <member name="T:authenticationApp.Controllers.AuthenticationController">
+            <summary>
+            Authenticaiton ile iligli metotları içerir.
+            </summary>
+        </member>
+        <member name="M:authenticationApp.Controllers.AuthenticationController.#ctor(Microsoft.Extensions.Logging.ILogger{authenticationApp.Controllers.AuthenticationController},authenticationApp.Services.AuthenticationService)">
+            <summary>
+            
+            </summary>
+            <param name="logger"></param>
+            <param name="authenticationService"></param>
+        </member>
+        <member name="M:authenticationApp.Controllers.AuthenticationController.Get">
+            <summary>
+            Usrname ve password bilgilerini DB den sorgular ve getirir.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:authenticationApp.Models.AuthenticatedUser">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:authenticationApp.Models.AuthenticatedUser.Id">
+            <summary>
+            
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:authenticationApp.Models.AuthenticatedUser.username">
+            <summary>
+            
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:authenticationApp.Models.AuthenticatedUser.password">
+            <summary>
+            
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:authenticationApp.Models.AuthenticatedUser.email">
+            <summary>
+            
+            </summary>
+            <value></value>
+        </member>
+        <member name="T:authenticationApp.Models.AuthenticationAppDBSetings">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:authenticationApp.Models.AuthenticationAppDBSetings.AuthenticationAppCollectionName">
+            <summary>
+            
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:authenticationApp.Models.AuthenticationAppDBSetings.ConnectionString">
+            <summary>
+            
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:authenticationApp.Models.AuthenticationAppDBSetings.DatabaseName">
+            <summary>
+            
+            </summary>
+            <value></value>
+        </member>
+        <member name="T:authenticationApp.Models.IAuthenticationAppDBSetings">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:authenticationApp.Models.IAuthenticationAppDBSetings.AuthenticationAppCollectionName">
+            <summary>
+            
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:authenticationApp.Models.IAuthenticationAppDBSetings.ConnectionString">
+            <summary>
+            
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:authenticationApp.Models.IAuthenticationAppDBSetings.DatabaseName">
+            <summary>
+            
+            </summary>
+            <value></value>
+        </member>
+        <member name="T:authenticationApp.Program">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:authenticationApp.Program.Main(System.String[])">
+            <summary>
+            
+            </summary>
+            <param name="args"></param>
+        </member>
+        <member name="M:authenticationApp.Program.CreateHostBuilder(System.String[])">
+            <summary>
+            
+            </summary>
+            <param name="args"></param>
+            <returns></returns>
+        </member>
+        <member name="T:authenticationApp.Services.AuthenticationService">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:authenticationApp.Services.AuthenticationService.#ctor(authenticationApp.Models.IAuthenticationAppDBSetings)">
+            <summary>
+            
+            </summary>
+            <param name="settings"></param>
+        </member>
+        <member name="M:authenticationApp.Services.AuthenticationService.Get">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:authenticationApp.Services.AuthenticationService.Get(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:authenticationApp.Services.AuthenticationService.Create(authenticationApp.Models.AuthenticatedUser)">
+            <summary>
+            
+            </summary>
+            <param name="user"></param>
+            <returns></returns>
+        </member>
+        <member name="M:authenticationApp.Services.AuthenticationService.Update(System.String,authenticationApp.Models.AuthenticatedUser)">
+            <summary>
+            
+            </summary>
+            <param name="id"></param>
+            <param name="updatedUser"></param>
+        </member>
+        <member name="M:authenticationApp.Services.AuthenticationService.Delete(authenticationApp.Models.AuthenticatedUser)">
+            <summary>
+            
+            </summary>
+            <param name="userForDeletion"></param>
+        </member>
+        <member name="M:authenticationApp.Services.AuthenticationService.Delete(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="id"></param>
+        </member>
+        <member name="T:authenticationApp.Startup">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:authenticationApp.Startup.#ctor(Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            
+            </summary>
+            <param name="configuration"></param>
+        </member>
+        <member name="P:authenticationApp.Startup.Configuration">
+            <summary>
+            
+            </summary>
+            <value></value>
+        </member>
+        <member name="M:authenticationApp.Startup.ConfigureServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            This method gets called by the runtime. Use this method to add services to the container.
+            </summary>
+            <param name="services"></param>
+        </member>
+        <member name="M:authenticationApp.Startup.Configure(Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.AspNetCore.Hosting.IWebHostEnvironment)">
+            <summary>
+            This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+            </summary>
+            <param name="app"></param>
+            <param name="env"></param>
+        </member>
+    </members>
+</doc>
