@@ -16,6 +16,10 @@ using authenticationApp.Models;
 using authenticationApp.Services;
 using System.IO;
 using System.Reflection;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
+using System.Security.Claims;
 
 namespace authenticationApp
 {
@@ -46,6 +50,27 @@ namespace authenticationApp
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+
+            services
+             .AddAuthentication(x =>
+            {
+                x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            })
+             .AddJwtBearer(options =>
+             {
+                 options.TokenValidationParameters = new TokenValidationParameters
+                 {
+                     ValidateIssuerSigningKey = true,
+                     IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["AuthenticationAppJWTSettings:Secret"])),
+                     ValidateIssuer = false,
+                     ValidateAudience = false,
+                     ValidateLifetime = true,
+                     ValidateActor = false,
+                     NameClaimType = ClaimTypes.Name,
+                     ClockSkew = TimeSpan.Zero,
+                 };
+             });
 
             services.Configure<AuthenticationAppJWTSettings>(Configuration.GetSection(nameof(AuthenticationAppJWTSettings)));
             services.AddSingleton<IAuthenticationAppJWTSettings>(sp => sp.GetRequiredService<IOptions<AuthenticationAppJWTSettings>>().Value);
@@ -95,6 +120,7 @@ namespace authenticationApp
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

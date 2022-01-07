@@ -34,13 +34,7 @@ namespace authenticationApp.Services
         }
 
         /// <summary>
-        /// 
-        /// </summary>
-        /// <returns></returns>
-        public List<AuthenticatedUser> Get() => _authenticatedUsers.Find(user => true).ToList();
-
-        /// <summary>
-        /// 
+        /// Validate user and return jwt
         /// </summary>
         /// <returns></returns>
         public string ValidateUser(string username, string password)
@@ -53,7 +47,7 @@ namespace authenticationApp.Services
                     JwtSecurityTokenHandler tokenHandler = new JwtSecurityTokenHandler();
                     var key = Encoding.ASCII.GetBytes(_secret);
                     SecurityTokenDescriptor tokenDescriptor = new SecurityTokenDescriptor();
-                    Claim claim = new Claim(ClaimTypes.Name, "abc");
+                    Claim claim = new Claim(ClaimTypes.Name, "authenticationAppVerify");
                     Claim[] claimArray = new Claim[1] { claim };
                     ClaimsIdentity claimsIdentity = new ClaimsIdentity(claimArray);
                     tokenDescriptor.Subject = claimsIdentity;
@@ -72,42 +66,5 @@ namespace authenticationApp.Services
                 throw new System.Exception("No Valid Username/Password");
             }
         }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="id"></param>
-        /// <returns></returns>
-        public AuthenticatedUser Get(string id) => _authenticatedUsers.Find(user => user.Id == id).FirstOrDefault();
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="user"></param>
-        /// <returns></returns>
-        public AuthenticatedUser Create(AuthenticatedUser user)
-        {
-            _authenticatedUsers.InsertOne(user);
-            return user;
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="id"></param>
-        /// <param name="updatedUser"></param>
-        public void Update(string id, AuthenticatedUser updatedUser) => _authenticatedUsers.ReplaceOne(game => game.Id == id, updatedUser);
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="userForDeletion"></param>
-        public void Delete(AuthenticatedUser userForDeletion) => _authenticatedUsers.DeleteOne(game => game.Id == userForDeletion.Id);
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="id"></param>
-        public void Delete(string id) => _authenticatedUsers.DeleteOne(user => user.Id == id);
     }
 }

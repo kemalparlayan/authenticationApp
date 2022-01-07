@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using authenticationApp.Services;
 using authenticationApp.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace authenticationApp.Controllers
 {
@@ -13,6 +14,7 @@ namespace authenticationApp.Controllers
     /// <summary>
     /// Authenticaiton ile iligli metotları içerir.
     /// </summary>
+    [Authorize]
     [ApiController]
     [Route("[controller]")]
     public class AuthenticationController : ControllerBase
@@ -34,10 +36,11 @@ namespace authenticationApp.Controllers
 
 
         /// <summary>
-        /// Kullanıcı doğrulanırsa JWT dönecek
+        /// Returns JWT if username password verify.
         /// </summary>
         /// <param name="user"></param>
         /// <returns></returns>
+        [AllowAnonymous]
         [HttpPost]
         public string Post([FromBody] AuthenticatedUser user)
         {
