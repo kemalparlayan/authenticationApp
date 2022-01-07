@@ -32,14 +32,16 @@ namespace authenticationApp.Controllers
             _authenticationService = authenticationService;
         }
 
+
         /// <summary>
-        /// Usrname ve password bilgilerini DB den sorgular ve getirir.
+        /// Kullanıcı doğrulanırsa JWT dönecek
         /// </summary>
+        /// <param name="user"></param>
         /// <returns></returns>
-        [HttpGet]
-        public IEnumerable<AuthenticatedUser> Get()
+        [HttpPost]
+        public string Post([FromBody] AuthenticatedUser user)
         {
-            return _authenticationService.Get();
+            return _authenticationService.ValidateUser(user.username, user.password);
         }
     }
 }

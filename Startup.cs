@@ -47,8 +47,10 @@ namespace authenticationApp
         {
             services.AddControllers();
 
-            services.Configure<AuthenticationAppDBSetings>(Configuration.GetSection(nameof(AuthenticationAppDBSetings)));
-            services.AddSingleton<IAuthenticationAppDBSetings>(sp => sp.GetRequiredService<IOptions<AuthenticationAppDBSetings>>().Value);
+            services.Configure<AuthenticationAppJWTSettings>(Configuration.GetSection(nameof(AuthenticationAppJWTSettings)));
+            services.AddSingleton<IAuthenticationAppJWTSettings>(sp => sp.GetRequiredService<IOptions<AuthenticationAppJWTSettings>>().Value);
+            services.Configure<AuthenticationAppDBSettings>(Configuration.GetSection(nameof(AuthenticationAppDBSettings)));
+            services.AddSingleton<IAuthenticationAppDBSettings>(sp => sp.GetRequiredService<IOptions<AuthenticationAppDBSettings>>().Value);
             services.AddSingleton<AuthenticationService>();
 
             services.AddSwaggerGen(c =>

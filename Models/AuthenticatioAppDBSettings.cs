@@ -4,7 +4,7 @@ namespace authenticationApp.Models
     /// <summary>
     /// 
     /// </summary>
-    public class AuthenticationAppDBSetings : IAuthenticationAppDBSetings
+    public class AuthenticationAppDBSettings : IAuthenticationAppDBSettings
     {
         /// <summary>
         /// 
@@ -26,7 +26,7 @@ namespace authenticationApp.Models
     /// <summary>
     /// 
     /// </summary>
-    public interface IAuthenticationAppDBSetings
+    public interface IAuthenticationAppDBSettings
     {
         /// <summary>
         /// 
